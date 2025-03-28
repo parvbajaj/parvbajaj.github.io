@@ -351,7 +351,7 @@
         <!-- Publications -->
         <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-publications">
           <div class="portfolio-content h-100">
-            <img src="assets/img/portfolio/RP.png" class="img-fluid" alt="Publication">
+            <img src="assets/img/portfolio/books-3.jpg" class="img-fluid" alt="Publication">
             <div class="portfolio-info">
               <h4>Cloud Security – The Future of Data Storage</h4>
               <p>Authored a Research Paper</p>
@@ -376,7 +376,9 @@
 </section>
 <!-- /Portfolio Section -->
 
-document.addEventListener("DOMContentLoaded", function () {
+<!-- Isotope Filtering Fix -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
   var isoContainer = document.querySelector(".isotope-container");
   var iso = new Isotope(isoContainer, {
     itemSelector: ".portfolio-item",
@@ -397,6 +399,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+</script>
 
     <!-- Services Section -->
     <section id="services" class="services section">
