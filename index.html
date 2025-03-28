@@ -504,7 +504,7 @@
 
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
-    <h2>Contact</h2>
+    <h2>Contact1</h2>
     <p>Get in touch with me for security consulting, penetration testing, and more.</p>
   </div><!-- End Section Title -->
 
@@ -545,33 +545,33 @@
       </div>
 
       <div class="col-lg-7">
-        <form action="https://formspree.io/f/xwplnvwz" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+        <form id="contact-form" action="https://formspree.io/f/xwplnvwz" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
           <div class="row gy-4">
 
             <div class="col-md-6">
               <label for="name-field" class="pb-2">Your Name</label>
-              <input type="text" name="name" id="name-field" class="form-control" required>
+              <input type="text" name="name" id="name-field" class="form-control" required="">
             </div>
 
             <div class="col-md-6">
               <label for="email-field" class="pb-2">Your Email</label>
-              <input type="email" class="form-control" name="email" id="email-field" required>
+              <input type="email" class="form-control" name="email" id="email-field" required="">
             </div>
 
             <div class="col-md-12">
               <label for="subject-field" class="pb-2">Subject</label>
-              <input type="text" class="form-control" name="subject" id="subject-field" required>
+              <input type="text" class="form-control" name="subject" id="subject-field" required="">
             </div>
 
             <div class="col-md-12">
               <label for="message-field" class="pb-2">Message</label>
-              <textarea class="form-control" name="message" rows="10" id="message-field" required></textarea>
+              <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
             </div>
 
             <div class="col-md-12 text-center">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="loading" style="display: none;">Loading...</div>
+              <div class="error-message" style="display: none; color: red;"></div>
+              <div class="sent-message" style="display: none; color: green;">Your message has been sent. Thank you!</div>
 
               <button type="submit">Send Message</button>
             </div>
@@ -587,6 +587,42 @@
 </section><!-- /Contact Section -->
 
 </main>
+
+<script>
+  document.getElementById("contact-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    
+    // Show loading text
+    document.querySelector(".loading").style.display = "block";
+    document.querySelector(".error-message").style.display = "none";
+    document.querySelector(".sent-message").style.display = "none";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        document.querySelector(".loading").style.display = "none";
+        document.querySelector(".sent-message").style.display = "block";
+        form.reset();
+      } else {
+        throw new Error("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      document.querySelector(".loading").style.display = "none";
+      document.querySelector(".error-message").textContent = error.message;
+      document.querySelector(".error-message").style.display = "block";
+    }
+  });
+</script>
 
 
   <footer id="footer" class="footer position-relative light-background">
