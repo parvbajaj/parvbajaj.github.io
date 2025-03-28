@@ -827,11 +827,9 @@ section,
 
 .portfolio .portfolio-content img {
   transition: 0.3s;
-  width: 1024px; /* Fixed width */
-  height: 768px; /* Fixed height */
+  width: 100%; /* Fixed width */
+  height: 250px; /* Fixed height */
   object-fit: cover; /* Maintains aspect ratio while covering the space */
-  display: block;
-  margin: 0 auto; /* Centers images if needed */
 }
 
 .portfolio .portfolio-content .portfolio-info {
