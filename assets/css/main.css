@@ -827,8 +827,6 @@ section,
 
 .portfolio .portfolio-content img {
   transition: 0.3s;
-  width: 100%; /* Fixed width */
-  height: 250px; /* Fixed height */
   object-fit: cover; /* Maintains aspect ratio while covering the space */
 }
 
