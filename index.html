@@ -376,25 +376,27 @@
 </section>
 <!-- /Portfolio Section -->
 
-<!-- Isotope Filtering Fix -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var isoContainer = document.querySelector(".isotope-container");
-    var iso = new Isotope(isoContainer, {
-      itemSelector: ".portfolio-item",
-      layoutMode: "masonry",
-      filter: ".filter-projects" // Ensures projects are displayed by default
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  var isoContainer = document.querySelector(".isotope-container");
+  var iso = new Isotope(isoContainer, {
+    itemSelector: ".portfolio-item",
+    layoutMode: "masonry",
+    filter: ".filter-projects" // Ensures projects are displayed by default
+  });
 
-    document.querySelectorAll(".portfolio-filters li").forEach(function (filterBtn) {
-      filterBtn.addEventListener("click", function () {
-        document.querySelector(".filter-active").classList.remove("filter-active");
-        this.classList.add("filter-active");
-        iso.arrange({ filter: this.getAttribute("data-filter") });
-      });
+  document.querySelectorAll(".portfolio-filters li").forEach(function (filterBtn) {
+    filterBtn.addEventListener("click", function () {
+      document.querySelector(".filter-active").classList.remove("filter-active");
+      this.classList.add("filter-active");
+      
+      var filterValue = this.getAttribute("data-filter");
+      iso.arrange({ filter: filterValue });
+
+      // Force layout refresh after filtering
+      setTimeout(() => iso.layout(), 300);
     });
   });
-</script>
+});
 
     <!-- Services Section -->
     <section id="services" class="services section">
