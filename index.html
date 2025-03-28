@@ -376,39 +376,25 @@
 </section>
 <!-- /Portfolio Section -->
 
-<!-- JavaScript Fix -->
+<!-- Isotope Filtering Fix -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    let portfolioContainer = document.querySelector('.isotope-container');
-    if (portfolioContainer) {
-        let iso = new Isotope(portfolioContainer, {
-            itemSelector: '.portfolio-item',
-            layoutMode: 'masonry',
-            filter: '.filter-projects' // Ensure only projects are shown initially
-        });
+  document.addEventListener("DOMContentLoaded", function () {
+    var isoContainer = document.querySelector(".isotope-container");
+    var iso = new Isotope(isoContainer, {
+      itemSelector: ".portfolio-item",
+      layoutMode: "masonry",
+      filter: ".filter-projects" // Ensures projects are displayed by default
+    });
 
-        // Update active class on filters
-        let filters = document.querySelectorAll(".portfolio-filters li");
-        filters.forEach(filter => {
-            filter.classList.remove("filter-active");
-            if (filter.getAttribute("data-filter") === ".filter-projects") {
-                filter.classList.add("filter-active");
-            }
-
-            // Handle clicks
-            filter.addEventListener("click", function () {
-                let filterValue = this.getAttribute("data-filter");
-                iso.arrange({ filter: filterValue });
-
-                // Update active class
-                filters.forEach(f => f.classList.remove("filter-active"));
-                this.classList.add("filter-active");
-            });
-        });
-    }
-});
+    document.querySelectorAll(".portfolio-filters li").forEach(function (filterBtn) {
+      filterBtn.addEventListener("click", function () {
+        document.querySelector(".filter-active").classList.remove("filter-active");
+        this.classList.add("filter-active");
+        iso.arrange({ filter: this.getAttribute("data-filter") });
+      });
+    });
+  });
 </script>
-
 
     <!-- Services Section -->
     <section id="services" class="services section">
