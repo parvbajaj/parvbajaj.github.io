@@ -815,15 +815,16 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const scrollDown = document.getElementById("scroll-down");
-    const heroSection = document.querySelector("#hero"); // More flexible selector
+    const heroSection = document.getElementById("hero");
 
     if (!scrollDown || !heroSection) {
-        console.error("Missing #hero or #scroll-down element");
-        return; // Stop execution if elements are missing
+        console.error("❌ Missing #hero or #scroll-down element");
+        return;
     }
 
     function toggleScrollDown() {
-        if (window.scrollY < heroSection.offsetHeight - 50) { // Adjust threshold if needed
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        if (heroBottom > window.innerHeight / 2) { // Show if still within hero
             scrollDown.classList.remove("hidden");
         } else {
             scrollDown.classList.add("hidden");
@@ -831,9 +832,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.addEventListener("scroll", toggleScrollDown);
-    toggleScrollDown(); // Run on page load
+    toggleScrollDown(); // Run once on load
 });
 </script>
+
 
 
   <!-- Scroll Top -->
