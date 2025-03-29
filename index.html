@@ -79,7 +79,7 @@
         
       </ul>
     </nav>
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".dropdown > a").forEach(function (dropdownToggle) {
         dropdownToggle.addEventListener("click", function (event) {
@@ -89,17 +89,25 @@ document.addEventListener("DOMContentLoaded", function () {
             let dropdownMenu = parentLi.querySelector(".dropdown-menu");
 
             if (dropdownMenu) {
-                // Close any open dropdowns first (optional: if you want only one open at a time)
-                document.querySelectorAll(".dropdown.active").forEach(function (item) {
-                    if (item !== parentLi) {
-                        item.classList.remove("active");
-                        item.querySelector(".dropdown-menu").classList.remove("show");
-                    }
-                });
-
-                // Toggle the dropdown
+                // Toggle active class for dropdown
                 parentLi.classList.toggle("active");
-                dropdownMenu.classList.toggle("show");
+
+                // Toggle visibility of the dropdown menu
+                if (parentLi.classList.contains("active")) {
+                    dropdownMenu.style.display = "block";
+                } else {
+                    dropdownMenu.style.display = "none";
+                }
+            }
+        });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+        document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+                dropdown.querySelector(".dropdown-menu").style.display = "none";
             }
         });
     });
