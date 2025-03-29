@@ -806,6 +806,29 @@
     </div>
 
   </footer>
+  
+  <!-- Scroll Down -->
+<a href="#about" id="scroll-down" class="scroll-down d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-down-short"></i>
+</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollDown = document.getElementById("scroll-down");
+    const heroSection = document.getElementById("hero");
+
+    function toggleScrollDown() {
+        if (window.scrollY < heroSection.clientHeight) {
+            scrollDown.classList.remove("hidden");
+        } else {
+            scrollDown.classList.add("hidden");
+        }
+    }
+
+    window.addEventListener("scroll", toggleScrollDown);
+    toggleScrollDown(); // Run on page load in case user refreshes mid-scroll
+});
+</script>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

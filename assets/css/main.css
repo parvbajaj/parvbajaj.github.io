@@ -1340,3 +1340,33 @@ section,
 .dropdown.active .toggle-dropdown {
     transform: rotate(180deg);
 }
+
+/*--------------------------------------------------------------
+# Scroll Down
+--------------------------------------------------------------*/
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.7); /* Adjust to match theme */
+    text-decoration: none;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    animation: bounce 1.5s infinite;
+}
+
+.scroll-down.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
