@@ -70,9 +70,8 @@
                 <li><a href="#">Deep Dropdown 3</a></li>
                 <li><a href="#">Deep Dropdown 4</a></li>
                 <li><a href="#">Deep Dropdown 5</a></li>
-              </ul>-->
+              </ul>
             </li>
-            <li><a href="CSRF.html">CSRF</a></li>
             <!--<li><a href="#">Dropdown 3</a></li>
             <li><a href="#">Dropdown 4</a></li>
           </ul>
@@ -80,22 +79,33 @@
         
       </ul>
     </nav>
-    <script>
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".dropdown > a").forEach(function (dropdownToggle) {
         dropdownToggle.addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent default anchor behavior
-            let parentLi = this.parentElement;
-            parentLi.classList.toggle("active"); // Toggle active class for dropdown
+            event.preventDefault(); // Prevent default link behavior
 
+            let parentLi = this.parentElement;
             let dropdownMenu = parentLi.querySelector(".dropdown-menu");
+
             if (dropdownMenu) {
+                // Close any open dropdowns first (optional: if you want only one open at a time)
+                document.querySelectorAll(".dropdown.active").forEach(function (item) {
+                    if (item !== parentLi) {
+                        item.classList.remove("active");
+                        item.querySelector(".dropdown-menu").classList.remove("show");
+                    }
+                });
+
+                // Toggle the dropdown
+                parentLi.classList.toggle("active");
                 dropdownMenu.classList.toggle("show");
             }
         });
     });
 });
 </script>
+
 
   </header>
 
