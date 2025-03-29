@@ -65,12 +65,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let scrollPosition = window.scrollY;
         let aboutTop = aboutSection.offsetTop;
 
-        // Scroll Down - Visible on load, disappears when reaching #about
+        // Scroll Down - Visible on page load, disappears at #about
         if (scrollPosition < aboutTop - window.innerHeight / 2) {
-            scrollDown.classList.add("active");
-        }
-        if (scrollPosition >= aboutTop - 100) {
-            scrollDown.classList.remove("active");
+            scrollDown.classList.remove("hidden");
+        } else {
+            scrollDown.classList.add("hidden");
         }
 
         // Scroll Up - Appears after scrolling down
@@ -81,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Smooth Scroll for Scroll Top
+    // Smooth scroll for Scroll Top
     scrollTop.addEventListener("click", (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -91,7 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", toggleScrollButtons);
     toggleScrollButtons();
 });
-
 /**
  * Animation on Scroll (AOS) Init
  */
