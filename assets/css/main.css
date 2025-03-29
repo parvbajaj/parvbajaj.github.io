@@ -1346,8 +1346,8 @@ section,
    =============================== */
 .scroll-down {
   position: fixed;
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible !important; /* Force visibility */
+  opacity: 1 !important; /* Prevent accidental hiding */
   right: 15px;
   bottom: 15px;
   z-index: 99999;
@@ -1357,6 +1357,11 @@ section,
   border-radius: 50px;
   transition: all 0.4s;
   animation: bounce 1.5s infinite;
+}
+
+.scroll-down.hidden {
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 .scroll-down i {
