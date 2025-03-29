@@ -815,10 +815,15 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const scrollDown = document.getElementById("scroll-down");
-    const heroSection = document.getElementById("hero");
+    const heroSection = document.querySelector("#hero"); // More flexible selector
+
+    if (!scrollDown || !heroSection) {
+        console.error("Missing #hero or #scroll-down element");
+        return; // Stop execution if elements are missing
+    }
 
     function toggleScrollDown() {
-        if (window.scrollY < heroSection.clientHeight) {
+        if (window.scrollY < heroSection.offsetHeight - 50) { // Adjust threshold if needed
             scrollDown.classList.remove("hidden");
         } else {
             scrollDown.classList.add("hidden");
@@ -826,9 +831,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.addEventListener("scroll", toggleScrollDown);
-    toggleScrollDown(); // Run on page load in case user refreshes mid-scroll
+    toggleScrollDown(); // Run on page load
 });
 </script>
+
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
