@@ -1420,23 +1420,3 @@ section,
     50% { transform: translateY(-5px); }
 }
 
-
-/* ===============================
-   Hero Bounce
-   =============================== */
-
-@keyframes heroBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(10px); } /* Adjust bounce height */
-}
-
-.hero img {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    animation: heroBounce 2s ease-in-out infinite; /* Apply the bounce animation */
-}
