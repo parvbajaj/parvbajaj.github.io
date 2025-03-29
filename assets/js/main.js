@@ -54,11 +54,11 @@
       preloader.remove();
     });
   }
-  
-  //scroll
+  // Scroll
 document.addEventListener("DOMContentLoaded", function () {
-    const scrollTop = document.querySelector("#scroll-top");
-    const scrollDown = document.querySelector("#scroll-down");
+    const scrollTop = document.querySelector(".scroll-top");
+    const scrollDown = document.querySelector(".scroll-down");
+    const heroSection = document.getElementById("hero");
     const aboutSection = document.getElementById("about");
 
     function toggleScrollButtons() {
@@ -67,13 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Scroll Down - Appears on load, disappears when reaching #about
         if (scrollPosition < aboutTop - window.innerHeight / 2) {
-            scrollDown.classList.remove("hidden");
+            scrollDown.classList.add("active");
         } 
         if (scrollPosition >= aboutTop - 100) {
-            scrollDown.classList.add("hidden");
+            scrollDown.classList.remove("active");
         }
 
-        // Scroll Top - Appears after scrolling down
+        // Scroll Up - Appears after scrolling down
         if (scrollPosition > 100) {
             scrollTop.classList.add("active");
         } else {
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Run function on scroll and load
     window.addEventListener("scroll", toggleScrollButtons);
-    toggleScrollButtons(); // Ensures correct state on load
+    toggleScrollButtons();
 });
 
 /**
@@ -104,7 +104,6 @@ function aosInit() {
     });
 }
 window.addEventListener("load", aosInit);
-
 
 
   /**
