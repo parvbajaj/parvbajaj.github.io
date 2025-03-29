@@ -63,16 +63,17 @@
         <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Write-Ups & Blog</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
             <li><a href="CSRF.html">CSRF</a></li>-->
-       <li class="dropdown">
+  <li class="dropdown">
   <a href="#" class="dropdown-toggle">
     <i class="bi bi-menu-button navicon"></i> 
     <span>Write-Ups & Blog</span> 
-    <i class="bi bi-chevron-down toggle-arrow"></i>
+    <i class="bi bi-chevron-down toggle-arrow"></i> <!-- Restored Bootstrap Arrow -->
   </a>
   <ul class="dropdown-menu">
     <li><a href="CSRF.html">CSRF</a></li>
   </ul>
 </li>
+
 
             <!--<li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
@@ -100,16 +101,15 @@ document.addEventListener("DOMContentLoaded", function () {
             let dropdownMenu = parentLi.querySelector(".dropdown-menu");
             let arrowIcon = this.querySelector(".toggle-arrow");
 
-            // Toggle dropdown for full "Write-Ups & Blog" area
+            // Toggle dropdown and rotate arrow
             parentLi.classList.toggle("active");
 
-            // Show/Hide dropdown menu & animate arrow
             if (parentLi.classList.contains("active")) {
                 dropdownMenu.style.display = "block";
-                arrowIcon.style.transform = "rotate(180deg)";
+                arrowIcon.classList.add("rotated"); // New class for animation
             } else {
                 dropdownMenu.style.display = "none";
-                arrowIcon.style.transform = "rotate(0deg)";
+                arrowIcon.classList.remove("rotated");
             }
         });
     });
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let dropdownMenu = dropdown.querySelector(".dropdown-menu");
                 let arrowIcon = dropdown.querySelector(".toggle-arrow");
                 if (dropdownMenu) dropdownMenu.style.display = "none";
-                if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
+                if (arrowIcon) arrowIcon.classList.remove("rotated");
             }
         });
     });
