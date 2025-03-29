@@ -98,31 +98,16 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault(); // Prevent default link behavior
 
             let parentLi = this.parentElement;
-            let dropdownMenu = parentLi.querySelector(".dropdown-menu");
-            let arrowIcon = this.querySelector(".toggle-dropdown");
 
-            if (dropdownMenu) {
-                // Toggle dropdown visibility
-                parentLi.classList.toggle("active");
-                dropdownMenu.style.display = parentLi.classList.contains("active") ? "block" : "none";
+            // Toggle dropdown visibility
+            parentLi.classList.toggle("active");
 
-                // Rotate the arrow smoothly
-                arrowIcon.classList.toggle("rotated");
-            }
-        });
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener("click", function (event) {
-        document.querySelectorAll(".dropdown").forEach(function (dropdown) {
-            if (!dropdown.contains(event.target)) {
-                dropdown.classList.remove("active");
-                let menu = dropdown.querySelector(".dropdown-menu");
-                let arrow = dropdown.querySelector(".toggle-dropdown");
-
-                if (menu) menu.style.display = "none";
-                if (arrow) arrow.classList.remove("rotated");
-            }
+            // Close other open dropdowns (optional)
+            document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+                if (dropdown !== parentLi) {
+                    dropdown.classList.remove("active");
+                }
+            });
         });
     });
 });
