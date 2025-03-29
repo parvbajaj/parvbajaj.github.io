@@ -59,10 +59,17 @@
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
         <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-        <!-- Write-Ups & Blog Dropdown -->
+        <!-- Write-Ups & Blog Dropdown 
         <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Write-Ups & Blog</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
-            <li><a href="CSRF.html">CSRF</a></li>
+            <li><a href="CSRF.html">CSRF</a></li>-->
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle"><i class="bi bi-menu-button navicon"></i> <span>Write-Ups & Blog</span> <i class="bi bi-chevron-down"></i></a>
+  <ul class="dropdown-menu">
+    <li><a href="CSRF.html">CSRF</a></li>
+  </ul>
+</li>
+
             <!--<li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                 <li><a href="#">Deep Dropdown 1</a></li>
@@ -88,16 +95,14 @@ document.addEventListener("DOMContentLoaded", function () {
             let parentLi = this.parentElement;
             let dropdownMenu = parentLi.querySelector(".dropdown-menu");
 
-            if (dropdownMenu) {
-                // Toggle active class for dropdown
-                parentLi.classList.toggle("active");
+            // Toggle dropdown for full "Write-Ups & Blog" area
+            parentLi.classList.toggle("active");
 
-                // Toggle visibility of the dropdown menu
-                if (parentLi.classList.contains("active")) {
-                    dropdownMenu.style.display = "block";
-                } else {
-                    dropdownMenu.style.display = "none";
-                }
+            // Show/Hide the dropdown menu
+            if (parentLi.classList.contains("active")) {
+                dropdownMenu.style.display = "block";
+            } else {
+                dropdownMenu.style.display = "none";
             }
         });
     });
@@ -107,7 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".dropdown").forEach(function (dropdown) {
             if (!dropdown.contains(event.target)) {
                 dropdown.classList.remove("active");
-                dropdown.querySelector(".dropdown-menu").style.display = "none";
+                let dropdownMenu = dropdown.querySelector(".dropdown-menu");
+                if (dropdownMenu) dropdownMenu.style.display = "none";
             }
         });
     });
