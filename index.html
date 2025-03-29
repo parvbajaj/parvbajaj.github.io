@@ -67,7 +67,7 @@
   <a href="#" class="dropdown-toggle">
     <i class="bi bi-menu-button navicon"></i> 
     <span>Write-Ups & Blog</span> 
-    <i class="bi bi-chevron-down toggle-arrow"></i> <!-- Restored Bootstrap Arrow -->
+    <i class="bi bi-chevron-down toggle-dropdown"></i> <!-- Restored Bootstrap Arrow -->
   </a>
   <ul class="dropdown-menu">
     <li><a href="CSRF.html">CSRF</a></li>
@@ -93,23 +93,21 @@
     </nav>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".dropdown > a").forEach(function (dropdownToggle) {
+    document.querySelectorAll(".dropdown > .dropdown-toggle").forEach(function (dropdownToggle) {
         dropdownToggle.addEventListener("click", function (event) {
             event.preventDefault(); // Prevent default link behavior
 
             let parentLi = this.parentElement;
             let dropdownMenu = parentLi.querySelector(".dropdown-menu");
-            let arrowIcon = this.querySelector(".toggle-arrow");
+            let arrowIcon = this.querySelector(".toggle-dropdown");
 
-            // Toggle dropdown and rotate arrow
-            parentLi.classList.toggle("active");
+            if (dropdownMenu) {
+                // Toggle dropdown visibility
+                parentLi.classList.toggle("active");
+                dropdownMenu.style.display = parentLi.classList.contains("active") ? "block" : "none";
 
-            if (parentLi.classList.contains("active")) {
-                dropdownMenu.style.display = "block";
-                arrowIcon.classList.add("rotated"); // New class for animation
-            } else {
-                dropdownMenu.style.display = "none";
-                arrowIcon.classList.remove("rotated");
+                // Rotate the arrow smoothly
+                arrowIcon.classList.toggle("rotated");
             }
         });
     });
@@ -119,14 +117,16 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".dropdown").forEach(function (dropdown) {
             if (!dropdown.contains(event.target)) {
                 dropdown.classList.remove("active");
-                let dropdownMenu = dropdown.querySelector(".dropdown-menu");
-                let arrowIcon = dropdown.querySelector(".toggle-arrow");
-                if (dropdownMenu) dropdownMenu.style.display = "none";
-                if (arrowIcon) arrowIcon.classList.remove("rotated");
+                let menu = dropdown.querySelector(".dropdown-menu");
+                let arrow = dropdown.querySelector(".toggle-dropdown");
+
+                if (menu) menu.style.display = "none";
+                if (arrow) arrow.classList.remove("rotated");
             }
         });
     });
 });
+
 </script>
 
   </header>
