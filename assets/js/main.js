@@ -59,64 +59,38 @@
    * Scroll top button
    */
 document.addEventListener("DOMContentLoaded", function () {
-    const scrollDown = document.getElementById("scroll-down");
     const scrollTop = document.querySelector(".scroll-top");
-    const heroSection = document.getElementById("hero");
+    const scrollDown = document.querySelector("#scroll-down");
+    const heroSection = document.querySelector("#hero");
 
-    function toggleScrollDown() {
-        // Show scroll-down arrow only when user is at the top in the hero section
-        if (window.scrollY < heroSection.clientHeight - 50) {
+    function toggleScrollButtons() {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+
+        // Scroll-Top Button (Appears when scrolled down)
+        if (window.scrollY > 100) {
+            scrollTop.classList.add("active");
+        } else {
+            scrollTop.classList.remove("active");
+        }
+
+        // Scroll-Down Button (Only visible when in hero section)
+        if (heroBottom > window.innerHeight / 2) {
             scrollDown.classList.add("active");
         } else {
             scrollDown.classList.remove("active");
         }
     }
 
-    function toggleScrollTop() {
-        // Show scroll-up button only when scrolled down enough
-        if (window.scrollY > heroSection.clientHeight) {
-            scrollTop.classList.add("active");
-        } else {
-            scrollTop.classList.remove("active");
-        }
-    }
-
-    // Ensure correct state on page load
-    setTimeout(() => {
-        toggleScrollDown();
-        toggleScrollTop();
-    }, 100);
-
-    // Listen for scroll events and update arrows accordingly
-    window.addEventListener("scroll", () => {
-        toggleScrollDown();
-        toggleScrollTop();
+    // Smooth scrolling for scroll-top
+    scrollTop.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+    window.addEventListener("scroll", toggleScrollButtons);
+    window.addEventListener("load", toggleScrollButtons);
 });
 
-/**
- * Smooth scrolling for scroll-top button
- */
-document.querySelector('.scroll-top').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-/**
- * Animation on scroll function and init
- */
-function aosInit() {
-    AOS.init({
-        duration: 600,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-    });
-}
-window.addEventListener('load', aosInit);
   /**
    * Init typed.js
    */

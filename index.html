@@ -812,32 +812,6 @@
     <i class="bi bi-arrow-down-short"></i>
 </a>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const scrollDown = document.getElementById("scroll-down");
-    const heroSection = document.getElementById("hero");
-
-    if (!scrollDown || !heroSection) {
-        console.error("❌ Missing #hero or #scroll-down element");
-        return;
-    }
-
-    function toggleScrollDown() {
-        const heroBottom = heroSection.getBoundingClientRect().bottom;
-        if (heroBottom > window.innerHeight / 2) { // Show if still within hero
-            scrollDown.classList.remove("hidden");
-        } else {
-            scrollDown.classList.add("hidden");
-        }
-    }
-
-    window.addEventListener("scroll", toggleScrollDown);
-    toggleScrollDown(); // Run once on load
-});
-</script>
-
-
-
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
