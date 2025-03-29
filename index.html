@@ -63,8 +63,12 @@
         <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Write-Ups & Blog</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
             <li><a href="CSRF.html">CSRF</a></li>-->
-        <li class="dropdown">
-  <a href="#" class="dropdown-toggle"><i class="bi bi-menu-button navicon"></i> <span>Write-Ups & Blog</span> <i class="bi bi-chevron-down"></i></a>
+       <li class="dropdown">
+  <a href="#" class="dropdown-toggle">
+    <i class="bi bi-menu-button navicon"></i> 
+    <span>Write-Ups & Blog</span> 
+    <i class="bi bi-chevron-down toggle-arrow"></i>
+  </a>
   <ul class="dropdown-menu">
     <li><a href="CSRF.html">CSRF</a></li>
   </ul>
@@ -94,15 +98,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let parentLi = this.parentElement;
             let dropdownMenu = parentLi.querySelector(".dropdown-menu");
+            let arrowIcon = this.querySelector(".toggle-arrow");
 
             // Toggle dropdown for full "Write-Ups & Blog" area
             parentLi.classList.toggle("active");
 
-            // Show/Hide the dropdown menu
+            // Show/Hide dropdown menu & animate arrow
             if (parentLi.classList.contains("active")) {
                 dropdownMenu.style.display = "block";
+                arrowIcon.style.transform = "rotate(180deg)";
             } else {
                 dropdownMenu.style.display = "none";
+                arrowIcon.style.transform = "rotate(0deg)";
             }
         });
     });
@@ -113,13 +120,14 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!dropdown.contains(event.target)) {
                 dropdown.classList.remove("active");
                 let dropdownMenu = dropdown.querySelector(".dropdown-menu");
+                let arrowIcon = dropdown.querySelector(".toggle-arrow");
                 if (dropdownMenu) dropdownMenu.style.display = "none";
+                if (arrowIcon) arrowIcon.style.transform = "rotate(0deg)";
             }
         });
     });
 });
 </script>
-
 
   </header>
 
