@@ -58,36 +58,64 @@
   /**
    * Scroll top button
    */
-  let scrollTop = document.querySelector('.scroll-top');
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select the scroll-to-top and scroll-down elements
+    let scrollTop = document.querySelector('.scroll-top'); 
+    let scrollDown = document.querySelector('#scroll-down'); 
+    let heroSection = document.querySelector('#hero'); 
 
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    // Function to toggle visibility of scroll arrows based on scroll position
+    function toggleArrows() {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+
+        // Show the scroll-down arrow only when the user is in the hero section
+        if (heroBottom > window.innerHeight / 2) {
+            scrollDown.classList.add('active');
+        } else {
+            scrollDown.classList.remove('active');
+        }
+
+        // Show the scroll-to-top button when scrolled beyond 100px
+        if (window.scrollY > 100) {
+            scrollTop.classList.add('active');
+        } else {
+            scrollTop.classList.remove('active');
+        }
     }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+
+    // Smooth scroll to the #about section when clicking the scroll-down arrow
+    scrollDown.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector('#about').scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-  });
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+    // Smooth scroll to the top when clicking the scroll-to-top button
+    scrollTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
+    // Listen for scroll events and toggle arrows accordingly
+    window.addEventListener('scroll', toggleArrows);
+    window.addEventListener('load', toggleArrows); // Ensure the state is correct on page load
+});
+/**
+ * Animation on scroll function and init
+ */
+function aosInit() {
     AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
+        duration: 600,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
     });
-  }
-  window.addEventListener('load', aosInit);
+}
+window.addEventListener('load', aosInit);
 
   /**
    * Init typed.js
