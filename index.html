@@ -63,17 +63,16 @@
         <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Write-Ups & Blog</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
             <li><a href="CSRF.html">CSRF</a></li>-->
-  <li class="dropdown">
-  <a href="#" class="dropdown-toggle">
-    <i class="bi bi-menu-button navicon"></i> 
-    <span>Write-Ups & Blog</span> 
-    <i class="bi bi-chevron-down toggle-dropdown"></i> <!-- Restored Bootstrap Arrow -->
-  </a>
-  <ul class="dropdown-menu">
-    <li><a href="CSRF.html">CSRF</a></li>
-  </ul>
-</li>
-
+ <li class="dropdown">
+      <a href="#" class="dropdown-toggle">
+        <i class="bi bi-menu-button navicon"></i> <span>Write-Ups & Blog</span>
+        <i class="bi bi-chevron-down toggle-dropdown"></i> <!-- Keep only one arrow -->
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="CSRF.html">CSRF</a></li>
+      </ul>
+    </li>
+  
 
             <!--<li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
@@ -93,25 +92,35 @@
     </nav>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".dropdown > .dropdown-toggle").forEach(function (dropdownToggle) {
+    document.querySelectorAll(".dropdown-toggle").forEach(function (dropdownToggle) {
         dropdownToggle.addEventListener("click", function (event) {
             event.preventDefault(); // Prevent default link behavior
-
+            
             let parentLi = this.parentElement;
+            let dropdownMenu = parentLi.querySelector(".dropdown-menu");
 
-            // Toggle dropdown visibility
+            // Toggle active class for dropdown
             parentLi.classList.toggle("active");
 
-            // Close other open dropdowns (optional)
-            document.querySelectorAll(".dropdown").forEach(function (dropdown) {
-                if (dropdown !== parentLi) {
-                    dropdown.classList.remove("active");
-                }
-            });
+            // Toggle dropdown visibility
+            if (parentLi.classList.contains("active")) {
+                dropdownMenu.style.display = "block";
+            } else {
+                dropdownMenu.style.display = "none";
+            }
+        });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+        document.querySelectorAll(".dropdown").forEach(function (dropdown) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove("active");
+                dropdown.querySelector(".dropdown-menu").style.display = "none";
+            }
         });
     });
 });
-
 </script>
 
   </header>

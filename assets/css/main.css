@@ -1332,11 +1332,11 @@ section,
 --------------------------------------------------------------*/
 .toggle-dropdown {
     transition: transform 0.3s ease-in-out;
-    font-size: 16px;  /* Matches Bootstrap */
-    margin-left: 5px; /* Space between text and arrow */
+    font-size: 16px;  /* Keep Bootstrap styling */
+    margin-left: 5px;
 }
 
-/* Rotate Arrow on Open */
+/* Rotate Arrow on Active Dropdown */
 .dropdown.active .toggle-dropdown {
     transform: rotate(180deg);
 }
