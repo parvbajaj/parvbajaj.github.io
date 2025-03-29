@@ -80,6 +80,22 @@
         
       </ul>
     </nav>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".dropdown > a").forEach(function (dropdownToggle) {
+        dropdownToggle.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default anchor behavior
+            let parentLi = this.parentElement;
+            parentLi.classList.toggle("active"); // Toggle active class for dropdown
+
+            let dropdownMenu = parentLi.querySelector(".dropdown-menu");
+            if (dropdownMenu) {
+                dropdownMenu.classList.toggle("show");
+            }
+        });
+    });
+});
+</script>
 
   </header>
 
