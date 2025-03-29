@@ -58,52 +58,49 @@
   /**
    * Scroll top button
    */
-  document.addEventListener("DOMContentLoaded", function () {
-    // Select the scroll-to-top and scroll-down elements
-    let scrollTop = document.querySelector('.scroll-top'); 
-    let scrollDown = document.querySelector('#scroll-down'); 
-    let heroSection = document.querySelector('#hero'); 
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollDown = document.getElementById("scroll-down");
+    const heroSection = document.getElementById("hero");
 
-    // Function to toggle visibility of scroll arrows based on scroll position
-    function toggleArrows() {
-        const heroBottom = heroSection.getBoundingClientRect().bottom;
-
-        // Show the scroll-down arrow only when the user is in the hero section
-        if (heroBottom > window.innerHeight / 2) {
-            scrollDown.classList.add('active');
+    function toggleScrollDown() {
+        // Show the scroll-down button only when at the hero section
+        if (window.scrollY < heroSection.clientHeight - 100) {
+            scrollDown.classList.remove("hidden");
         } else {
-            scrollDown.classList.remove('active');
-        }
-
-        // Show the scroll-to-top button when scrolled beyond 100px
-        if (window.scrollY > 100) {
-            scrollTop.classList.add('active');
-        } else {
-            scrollTop.classList.remove('active');
+            scrollDown.classList.add("hidden");
         }
     }
 
-    // Smooth scroll to the #about section when clicking the scroll-down arrow
-    scrollDown.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelector('#about').scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+    // Run on page load in case user refreshes mid-scroll
+    toggleScrollDown();
 
-    // Smooth scroll to the top when clicking the scroll-to-top button
-    scrollTop.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Listen for scroll events and toggle arrows accordingly
-    window.addEventListener('scroll', toggleArrows);
-    window.addEventListener('load', toggleArrows); // Ensure the state is correct on page load
+    // Listen for scroll events
+    window.addEventListener("scroll", toggleScrollDown);
 });
+
+/**
+ * Scroll top button functionality
+ */
+let scrollTop = document.querySelector('.scroll-top');
+
+function toggleScrollTop() {
+    if (scrollTop) {
+        window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    }
+}
+
+scrollTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Run functions on load and scroll
+window.addEventListener('load', toggleScrollTop);
+document.addEventListener('scroll', toggleScrollTop);
+
 /**
  * Animation on scroll function and init
  */

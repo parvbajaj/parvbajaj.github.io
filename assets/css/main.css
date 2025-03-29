@@ -1345,34 +1345,42 @@ section,
    Scroll Down Arrow Styling
    =============================== */
 .scroll-down {
-    position: absolute; /* Position relative to the hero section */
-    bottom: 30px; /* Position near the bottom of the hero section */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust position correctly */
-    font-size: 32px; /* Size of the arrow */
-    color: rgba(255, 255, 255, 0.8); /* Light color to blend with theme */
-    text-decoration: none; /* Remove default underline */
-    opacity: 0; /* Initially hidden */
-    pointer-events: none; /* Prevent interaction when hidden */
-    transition: opacity 0.3s ease-in-out; /* Smooth transition */
-    animation: bounce 1.5s infinite; /* Apply bouncing effect */
-    z-index: 9999; /* Keep it above other elements */
+  position: fixed;
+  visibility: visible; /* Visible initially */
+  opacity: 1;
+  left: 50%;
+  bottom: 15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+  transform: translateX(-50%);
+  animation: bounce 1.5s infinite;
 }
 
-/* Scroll Down Arrow becomes visible when active */
-.scroll-down.active {
-    opacity: 1;
-    pointer-events: auto; /* Allow clicks when visible */
+.scroll-down i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
 }
 
-/* ===============================
-   Bounce Animation for Scroll Down Arrow
-   =============================== */
+.scroll-down:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+/* Hide when user scrolls down */
+.scroll-down.hidden {
+  visibility: hidden;
+  opacity: 0;
+  bottom: -15px;
+  pointer-events: none;
+}
+
+/* Bounce Animation */
 @keyframes bounce {
-    0%, 100% {
-        transform: translateX(-50%) translateY(0); /* Start and end at the same position */
-    }
-    50% {
-        transform: translateX(-50%) translateY(10px); /* Move down slightly in the middle */
-    }
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
 }
