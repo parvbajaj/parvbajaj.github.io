@@ -1326,3 +1326,16 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+/*--------------------------------------------------------------
+# navbar Section Section
+--------------------------------------------------------------*/
+.toggle-arrow {
+    transition: transform 0.3s ease-in-out;
+    font-size: 16px;  /* Restore previous arrow size */
+    margin-left: 5px; /* Space between text and arrow */
+}
+
+.toggle-arrow.rotated {
+    transform: rotate(180deg);
+}
