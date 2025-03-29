@@ -789,17 +789,19 @@ section,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 25px;
+  padding: 12px 30px;
   font-size: 16px;
   font-weight: 600;
   font-family: var(--default-font);
-  color: var(--contrast-color);
-  background-color: var(--accent-color);
-  border: 2px solid var(--accent-color);
+  color: white;
+  background: linear-gradient(135deg, var(--accent-color), #007bff); /* Gradient effect */
+  border: none;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 15px rgba(20, 157, 221, 0.2); /* Subtle shadow for depth */
+  box-shadow: 0 4px 15px rgba(20, 157, 221, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-download-resume i {
@@ -808,20 +810,13 @@ section,
 }
 
 .btn-download-resume:hover {
-  background-color: transparent;
-  color: var(--accent-color);
-  transform: scale(1.05); /* Slight scale-up on hover */
-  box-shadow: 0 6px 20px rgba(20, 157, 221, 0.3); /* Enhanced shadow on hover */
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(20, 157, 221, 0.4);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .btn-download-resume {
-    padding: 8px 20px;
-    font-size: 14px;
-  }
+.btn-download-resume:active {
+  transform: scale(0.98); /* Click effect */
 }
-
 
 
 /*--------------------------------------------------------------
