@@ -55,9 +55,31 @@
     });
   }
 
-  /**
-   * Scroll top button
-   */
+ /**
+ * Scroll Top Button Logic
+ */
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollTop = document.querySelector(".scroll-top");
+
+    if (scrollTop) {
+        function toggleScrollTop() {
+            if (window.scrollY > 100) {
+                scrollTop.classList.add("active");
+            } else {
+                scrollTop.classList.remove("active");
+            }
+        }
+
+        scrollTop.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        window.addEventListener("scroll", toggleScrollTop);
+        toggleScrollTop(); // Run on page load
+    }
+});
+
 /**
  * Scroll Down Button Logic
  */
@@ -73,11 +95,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function toggleScrollDown() {
         const heroBottom = heroSection.getBoundingClientRect().bottom;
 
-        if (window.scrollY === 0) { 
-            // Show only when at the top and within the hero section
+        if (window.scrollY === 0) {
+            // Show only when at the top
             scrollDown.classList.add("active");
         } else {
-            // Hide when scrolled past hero
+            // Hide once scrolled past hero
             scrollDown.classList.remove("active");
         }
     }
@@ -86,19 +108,19 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleScrollDown(); // Run once on load
 });
 
-
 /**
- * Animation on scroll function and init
+ * Animation on Scroll (AOS) Init
  */
 function aosInit() {
     AOS.init({
         duration: 600,
-        easing: 'ease-in-out',
+        easing: "ease-in-out",
         once: true,
         mirror: false
     });
 }
-window.addEventListener('load', aosInit);
+window.addEventListener("load", aosInit);
+
 
   /**
    * Init typed.js
