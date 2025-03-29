@@ -60,10 +60,11 @@
    */
 document.addEventListener("DOMContentLoaded", function () {
     const scrollDown = document.getElementById("scroll-down");
+    const scrollTop = document.querySelector(".scroll-top");
     const heroSection = document.getElementById("hero");
 
     function toggleScrollDown() {
-        // Show scroll-down button only when in the hero section
+        // Show scroll-down arrow only when user is at the top in the hero section
         if (window.scrollY < heroSection.clientHeight - 50) {
             scrollDown.classList.add("active");
         } else {
@@ -71,35 +72,38 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Run on page load after a small delay to ensure correct behavior
-    setTimeout(toggleScrollDown, 100);
+    function toggleScrollTop() {
+        // Show scroll-up button only when scrolled down enough
+        if (window.scrollY > heroSection.clientHeight) {
+            scrollTop.classList.add("active");
+        } else {
+            scrollTop.classList.remove("active");
+        }
+    }
 
-    // Listen for scroll events
-    window.addEventListener("scroll", toggleScrollDown);
+    // Ensure correct state on page load
+    setTimeout(() => {
+        toggleScrollDown();
+        toggleScrollTop();
+    }, 100);
+
+    // Listen for scroll events and update arrows accordingly
+    window.addEventListener("scroll", () => {
+        toggleScrollDown();
+        toggleScrollTop();
+    });
 });
 
 /**
- * Scroll top button functionality
+ * Smooth scrolling for scroll-top button
  */
-let scrollTop = document.querySelector('.scroll-top');
-
-function toggleScrollTop() {
-    if (scrollTop) {
-        window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
-    }
-}
-
-scrollTop.addEventListener('click', (e) => {
+document.querySelector('.scroll-top').addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
 });
-
-// Run functions on load and scroll
-window.addEventListener('load', toggleScrollTop);
-document.addEventListener('scroll', toggleScrollTop);
 
 /**
  * Animation on scroll function and init
@@ -112,9 +116,7 @@ function aosInit() {
         mirror: false
     });
 }
-
 window.addEventListener('load', aosInit);
-
   /**
    * Init typed.js
    */
