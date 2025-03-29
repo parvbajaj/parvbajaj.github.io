@@ -54,58 +54,42 @@
       preloader.remove();
     });
   }
-
- /**
- * Scroll Top Button Logic
- */
+  // Scroll
 document.addEventListener("DOMContentLoaded", function () {
     const scrollTop = document.querySelector(".scroll-top");
+    const scrollDown = document.querySelector(".scroll-down");
+    const heroSection = document.getElementById("hero");
+    const aboutSection = document.getElementById("about");
 
-    if (scrollTop) {
-        function toggleScrollTop() {
-            if (window.scrollY > 100) {
-                scrollTop.classList.add("active");
-            } else {
-                scrollTop.classList.remove("active");
-            }
-        }
+    function toggleScrollButtons() {
+        let scrollPosition = window.scrollY;
+        let aboutTop = aboutSection.offsetTop;
 
-        scrollTop.addEventListener("click", (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        window.addEventListener("scroll", toggleScrollTop);
-        toggleScrollTop(); // Run on page load
-    }
-});
-
-/**
- * Scroll Down Button Logic
- */
-document.addEventListener("DOMContentLoaded", function () {
-    const scrollDown = document.querySelector("#scroll-down");
-    const heroSection = document.querySelector("#hero");
-
-    if (!scrollDown || !heroSection) {
-        console.error("❌ Missing #hero or #scroll-down element");
-        return;
-    }
-
-    function toggleScrollDown() {
-        const heroBottom = heroSection.getBoundingClientRect().bottom;
-
-        if (window.scrollY === 0) {
-            // Show only when at the top
+        // Scroll Down - Appears on load, disappears when reaching #about
+        if (scrollPosition < aboutTop - window.innerHeight / 2) {
             scrollDown.classList.add("active");
-        } else {
-            // Hide once scrolled past hero
+        } 
+        if (scrollPosition >= aboutTop - 100) {
             scrollDown.classList.remove("active");
         }
+
+        // Scroll Up - Appears after scrolling down
+        if (scrollPosition > 100) {
+            scrollTop.classList.add("active");
+        } else {
+            scrollTop.classList.remove("active");
+        }
     }
 
-    window.addEventListener("scroll", toggleScrollDown);
-    toggleScrollDown(); // Run once on load
+    // Smooth scroll for Scroll Top
+    scrollTop.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Run function on scroll and load
+    window.addEventListener("scroll", toggleScrollButtons);
+    toggleScrollButtons();
 });
 
 /**

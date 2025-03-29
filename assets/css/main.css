@@ -1346,9 +1346,9 @@ section,
    =============================== */
 .scroll-down {
   position: fixed;
-  visibility: visible; /* Visible initially */
-  opacity: 1;
-  left: 50%;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
   bottom: 15px;
   z-index: 99999;
   background-color: var(--accent-color);
@@ -1356,7 +1356,6 @@ section,
   height: 44px;
   border-radius: 50px;
   transition: all 0.4s;
-  transform: translateX(-50%);
   animation: bounce 1.5s infinite;
 }
 
@@ -1371,16 +1370,13 @@ section,
   color: var(--contrast-color);
 }
 
-/* Hide when user scrolls down */
-.scroll-down.hidden {
-  visibility: hidden;
-  opacity: 0;
-  bottom: -15px;
-  pointer-events: none;
+.scroll-down.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Bounce Animation */
 @keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-10px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
