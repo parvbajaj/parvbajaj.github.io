@@ -58,38 +58,34 @@
   /**
    * Scroll top button
    */
+/**
+ * Scroll Down Button Logic
+ */
 document.addEventListener("DOMContentLoaded", function () {
-    const scrollTop = document.querySelector(".scroll-top");
     const scrollDown = document.querySelector("#scroll-down");
     const heroSection = document.querySelector("#hero");
 
-    function toggleScrollButtons() {
+    if (!scrollDown || !heroSection) {
+        console.error("❌ Missing #hero or #scroll-down element");
+        return;
+    }
+
+    function toggleScrollDown() {
         const heroBottom = heroSection.getBoundingClientRect().bottom;
 
-        // Scroll-Top Button (Appears when scrolled down)
-        if (window.scrollY > 100) {
-            scrollTop.classList.add("active");
-        } else {
-            scrollTop.classList.remove("active");
-        }
-
-        // Scroll-Down Button (Only visible when in hero section)
-        if (heroBottom > window.innerHeight / 2) {
+        if (window.scrollY === 0) { 
+            // Show only when at the top and within the hero section
             scrollDown.classList.add("active");
         } else {
+            // Hide when scrolled past hero
             scrollDown.classList.remove("active");
         }
     }
 
-    // Smooth scrolling for scroll-top
-    scrollTop.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    window.addEventListener("scroll", toggleScrollButtons);
-    window.addEventListener("load", toggleScrollButtons);
+    window.addEventListener("scroll", toggleScrollDown);
+    toggleScrollDown(); // Run once on load
 });
+
 
 /**
  * Animation on scroll function and init
