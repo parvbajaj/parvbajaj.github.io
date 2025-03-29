@@ -55,24 +55,25 @@
     });
   }
   
-  // Scroll Behavior
+  //scroll
 document.addEventListener("DOMContentLoaded", function () {
-    const scrollTop = document.querySelector(".scroll-top");
-    const scrollDown = document.querySelector(".scroll-down");
+    const scrollTop = document.querySelector("#scroll-top");
+    const scrollDown = document.querySelector("#scroll-down");
     const aboutSection = document.getElementById("about");
 
     function toggleScrollButtons() {
         let scrollPosition = window.scrollY;
         let aboutTop = aboutSection.offsetTop;
 
-        // Scroll Down - Visible on page load, disappears at #about
+        // Scroll Down - Appears on load, disappears when reaching #about
         if (scrollPosition < aboutTop - window.innerHeight / 2) {
             scrollDown.classList.remove("hidden");
-        } else {
+        } 
+        if (scrollPosition >= aboutTop - 100) {
             scrollDown.classList.add("hidden");
         }
 
-        // Scroll Up - Appears after scrolling down
+        // Scroll Top - Appears after scrolling down
         if (scrollPosition > 100) {
             scrollTop.classList.add("active");
         } else {
@@ -88,8 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Run function on scroll and load
     window.addEventListener("scroll", toggleScrollButtons);
-    toggleScrollButtons();
+    toggleScrollButtons(); // Ensures correct state on load
 });
+
 /**
  * Animation on Scroll (AOS) Init
  */
