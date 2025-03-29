@@ -778,6 +778,53 @@ section,
 }
 
 /*--------------------------------------------------------------
+# Resume Download Button
+--------------------------------------------------------------*/
+.resume-download {
+  margin-top: 20px;
+  text-align: left; /* Aligns with the resume content */
+}
+
+.btn-download-resume {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--default-font);
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(20, 157, 221, 0.2); /* Subtle shadow for depth */
+}
+
+.btn-download-resume i {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.btn-download-resume:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  transform: scale(1.05); /* Slight scale-up on hover */
+  box-shadow: 0 6px 20px rgba(20, 157, 221, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .btn-download-resume {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+
+
+/*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
 .portfolio .portfolio-filters {
