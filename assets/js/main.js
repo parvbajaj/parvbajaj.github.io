@@ -63,16 +63,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const heroSection = document.getElementById("hero");
 
     function toggleScrollDown() {
-        // Show the scroll-down button only when at the hero section
-        if (window.scrollY < heroSection.clientHeight - 100) {
-            scrollDown.classList.remove("hidden");
+        // Show scroll-down button only when in the hero section
+        if (window.scrollY < heroSection.clientHeight - 50) {
+            scrollDown.classList.add("active");
         } else {
-            scrollDown.classList.add("hidden");
+            scrollDown.classList.remove("active");
         }
     }
 
-    // Run on page load in case user refreshes mid-scroll
-    toggleScrollDown();
+    // Run on page load after a small delay to ensure correct behavior
+    setTimeout(toggleScrollDown, 100);
 
     // Listen for scroll events
     window.addEventListener("scroll", toggleScrollDown);
@@ -112,6 +112,7 @@ function aosInit() {
         mirror: false
     });
 }
+
 window.addEventListener('load', aosInit);
 
   /**
