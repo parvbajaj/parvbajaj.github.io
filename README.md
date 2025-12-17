@@ -18,11 +18,8 @@ It does not lie to you.
 ██║     ██║  ██║██║  ██║ ╚████╔╝ 
 ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  
 ```
-
-![mode](https://img.shields.io/badge/mode-userland-blue)
 ![build](https://img.shields.io/badge/build-stable-brightgreen)
 ![entropy](https://img.shields.io/badge/entropy-low-lightgrey)
-![signal](https://img.shields.io/badge/signal-high-green)
 
 ```bash
 $ whoami
