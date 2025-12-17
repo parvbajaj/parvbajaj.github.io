@@ -1,3 +1,4 @@
+```bash
 $ ssh parv@parvbajaj.github.io
 Connected.
 
@@ -14,7 +15,7 @@ Working links.
 
 parv@portfolio:~$ ls paths/
 
-This site contains **a path**, not a prize.
+This site contains a path, not a prize.
 
 parv@portfolio:~$ exit
 Connection closed.
