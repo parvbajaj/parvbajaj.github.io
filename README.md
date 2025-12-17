@@ -31,7 +31,7 @@ $ pwd
 $ ls
 experience  projects  resume  contact
 
-$ cat README
+$ cat note.txt
 A personal portfolio showcasing my work, experience, and ways to get in touch.
 Everything here is exactly what it looks like.
 ```
@@ -44,7 +44,7 @@ Everything here is exactly what it looks like.
 ---
 
 ```bash
-$ ls paths/
+$ cat /tmp/secret.py
 ```
 
 This site contains a path, not a prize.
