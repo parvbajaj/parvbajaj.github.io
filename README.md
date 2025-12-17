@@ -1,11 +1,11 @@
 # parvbajaj.github.io
 
-Portfolio — Userland
+### Parv's Portfolio 
 
 > everything here resolves  
 > exactly the way you expect it to
 
-This repo powers my personal portfolio site.  
+This repo powers my portfolio site.  
 It does not lie to you.
 
 ---
@@ -56,7 +56,7 @@ If you followed it here, you already know where it leads.
 If you didn’t, you don’t need it.
 
 ---
-
+<!-- invisible decoy: r​0​0​t​p​4​r​v​{​f​4​k​3​_​f​l​4​gz_Ev3r3wh3r3​} -->
 Built by Parv Bajaj  
 Mode: user  
 Shell: interactive
