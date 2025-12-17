@@ -22,6 +22,9 @@ It does not lie to you.
 ![flags](https://img.shields.io/badge/flags-unknown-red)
 
 ```bash
+$ ssh parv@parvbajaj.github.io
+Connected.
+
 $ whoami
 parv
 
@@ -48,10 +51,11 @@ $ cat /tmp/secret.py
 This site contains a path, not a prize.
 If you followed it here, you already know where it leads.  
 If you didn’t, you don’t need it.
+
+$ exit
+Connection closed.
 ```
 
 ---
 <!-- invisible decoy: r​0​0​t​p​4​r​v​{​f​4​k​3​_​f​l​4​gz_Ev3r3wh3r3​} -->
 Built by Parv Bajaj  
-Mode: user  
-Shell: interactive
