@@ -45,12 +45,10 @@ Everything here is exactly what it looks like.
 
 ```bash
 $ cat /tmp/secret.py
-```
-
 This site contains a path, not a prize.
-
 If you followed it here, you already know where it leads.  
 If you didn’t, you don’t need it.
+```
 
 ---
 <!-- invisible decoy: r​0​0​t​p​4​r​v​{​f​4​k​3​_​f​l​4​gz_Ev3r3wh3r3​} -->
