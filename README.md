@@ -19,7 +19,7 @@ It does not lie to you.
 ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  
 ```
 ![build](https://img.shields.io/badge/build-stable-brightgreen)
-![entropy](https://img.shields.io/badge/entropy-low-lightgrey)
+![flags](https://img.shields.io/badge/flags-known-red)
 
 ```bash
 $ whoami
